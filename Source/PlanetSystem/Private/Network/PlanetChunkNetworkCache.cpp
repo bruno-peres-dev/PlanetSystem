@@ -2,6 +2,7 @@
 #include "Debug/Logging/PlanetSystemLogger.h"
 #include "Core/Events/PlanetEventBus.h"
 #include "Configuration/DataAssets/CoreConfig.h"
+#include "Core/Cache/PlanetCachePolicy.h"
 #include "Engine/World.h"
 #include "HAL/PlatformTime.h"
 
