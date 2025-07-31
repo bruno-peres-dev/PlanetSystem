@@ -4,6 +4,7 @@
 #include "UObject/Object.h"
 #include "ProceduralMeshComponent.h"
 #include "Configuration/DataAssets/CoreConfig.h"
+#include "Common/PlanetTypes.h"
 #include "PlanetMeshGenerator.generated.h"
 
 // Forward declarations

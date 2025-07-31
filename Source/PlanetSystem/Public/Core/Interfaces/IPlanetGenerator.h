@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
 #include "Core/Events/PlanetSystemEvents.h"
+#include "Common/PlanetTypes.h"
 #include "IPlanetGenerator.generated.h"
 
 // Forward declarations

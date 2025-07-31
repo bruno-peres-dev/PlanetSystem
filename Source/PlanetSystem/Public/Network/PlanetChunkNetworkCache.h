@@ -4,6 +4,7 @@
 #include "UObject/Object.h"
 #include "Configuration/DataAssets/CoreConfig.h"
 #include "Core/Cache/PlanetCachePolicy.h"
+#include "Common/PlanetTypes.h"
 #include "PlanetChunkNetworkCache.generated.h"
 
 // Forward declarations

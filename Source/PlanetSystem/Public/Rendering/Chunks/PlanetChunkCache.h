@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "Rendering/Chunks/ChunkCache.h"
+#include "Common/PlanetTypes.h"
 #include "PlanetChunkCache.generated.h"
 
 // Forward declarations

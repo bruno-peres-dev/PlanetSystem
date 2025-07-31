@@ -3,6 +3,7 @@
 #include "UObject/NoExportTypes.h"
 #include "Configuration/DataAssets/CoreConfig.h"
 #include "Core/Events/PlanetSystemEvents.h"
+#include "Common/PlanetTypes.h"
 #include "PlanetDataSerializer.generated.h"
 
 // Forward declarations
