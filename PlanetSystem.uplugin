@@ -1,0 +1,11 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.2",
+  "FriendlyName": "Planet System Plugin",
+  "Description": "Planeta procedural determinístico com LOD, biomas, oceanos, edição e erosão estilizada.",
+  "Category": "Procedural",
+  "Modules": [
+    { "Name": "PlanetSystem", "Type": "Runtime", "LoadingPhase": "Default" }
+  ]
+}
