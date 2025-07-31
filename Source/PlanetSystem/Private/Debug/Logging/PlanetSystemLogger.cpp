@@ -166,6 +166,24 @@ void UPlanetSystemLogger::LogDebug(const FString& Message, const FString& Contex
     Log(FullMessage, EPlanetLogLevel::Debug, Category);
 }
 
+void UPlanetSystemLogger::LogInfo(const FString& Message, const FString& Context, EPlanetLogCategory Category)
+{
+    FString FullMessage = Context.IsEmpty() ? Message : FString::Printf(TEXT("%s (Context: %s)"), *Message, *Context);
+    Log(FullMessage, EPlanetLogLevel::Info, Category);
+}
+
+void UPlanetSystemLogger::LogVerbose(const FString& Message, const FString& Context, EPlanetLogCategory Category)
+{
+    FString FullMessage = Context.IsEmpty() ? Message : FString::Printf(TEXT("%s (Context: %s)"), *Message, *Context);
+    Log(FullMessage, EPlanetLogLevel::Verbose, Category);
+}
+
+void UPlanetSystemLogger::LogCritical(const FString& Message, const FString& Context, EPlanetLogCategory Category)
+{
+    FString FullMessage = Context.IsEmpty() ? Message : FString::Printf(TEXT("%s (Context: %s)"), *Message, *Context);
+    Log(FullMessage, EPlanetLogLevel::Critical, Category);
+}
+
 void UPlanetSystemLogger::LogEvent(const FString& EventName, const FString& Details, EPlanetLogCategory Category)
 {
     FString Message = Details.IsEmpty() ? EventName : FString::Printf(TEXT("%s: %s"), *EventName, *Details);
