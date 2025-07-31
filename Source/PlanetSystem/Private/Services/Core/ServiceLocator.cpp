@@ -290,9 +290,9 @@ void UPlanetSystemServiceLocator::BroadcastEventWithParams(EPlanetEventType Even
     FPlanetSystemEvent Event;
     Event.EventType = EventType;
     Event.CustomName = CustomName;
-    Event.StringParameter = StringParam;
-    Event.FloatParameter = FloatParam;
-    Event.IntParameter = IntParam;
+    Event.StringParam = StringParam;
+    Event.FloatParam = FloatParam;
+    Event.IntParam = IntParam;
     Event.Timestamp = FPlatformTime::Seconds();
     Event.SourceModule = TEXT("ServiceLocator");
     

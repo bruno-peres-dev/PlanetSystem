@@ -38,7 +38,7 @@ struct PLANETSYSTEM_API FPlanetSystemEvent
     
     /** Nome customizado do evento (usado quando EventType é Custom) */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Event")
-    FString CustomEventName;
+    FString CustomName;
     
     /** Timestamp do evento */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Event")
@@ -51,6 +51,18 @@ struct PLANETSYSTEM_API FPlanetSystemEvent
     /** Parâmetros do evento */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Event")
     TMap<FString, FString> Parameters;
+
+    /** Parâmetro string rápido */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Event")
+    FString StringParam = TEXT("");
+
+    /** Parâmetro float rápido */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Event")
+    float FloatParam = 0.0f;
+
+    /** Parâmetro inteiro rápido */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Event")
+    int32 IntParam = 0;
     
     /** Dados binários do evento (para dados complexos) */
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Event")
@@ -69,6 +81,9 @@ struct PLANETSYSTEM_API FPlanetSystemEvent
         Timestamp = FDateTime::Now();
         EventID = FGuid::NewGuid();
         Priority = 5;
+        StringParam = TEXT("");
+        FloatParam = 0.0f;
+        IntParam = 0;
     }
     
     /**
@@ -143,7 +158,7 @@ struct PLANETSYSTEM_API FPlanetSystemEvent
     {
         if (EventType == EPlanetEventType::Custom)
         {
-            return CustomEventName;
+            return CustomName;
         }
         
         static const UEnum* EventTypeEnum = FindObject<UEnum>(nullptr, TEXT("/Script/PlanetSystem.EPlanetEventType"));

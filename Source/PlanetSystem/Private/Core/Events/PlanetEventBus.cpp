@@ -123,7 +123,7 @@ void UPlanetEventBus::BroadcastEventWithParams(EPlanetEventType EventType, const
     Event.StringParam = StringParam;
     Event.FloatParam = FloatParam;
     Event.IntParam = IntParam;
-    Event.UniqueID = FGuid::NewGuid();
+    Event.EventID = FGuid::NewGuid();
     Event.SourceModule = TEXT("PlanetEventBus");
     
     BroadcastEvent(Event);
