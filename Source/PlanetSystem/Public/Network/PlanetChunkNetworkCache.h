@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "Configuration/DataAssets/CoreConfig.h"
+#include "Core/Cache/PlanetCachePolicy.h"
 #include "PlanetChunkNetworkCache.generated.h"
 
 // Forward declarations
