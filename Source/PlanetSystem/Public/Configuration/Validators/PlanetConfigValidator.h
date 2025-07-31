@@ -105,10 +105,14 @@ class PLANETSYSTEM_API UPlanetConfigValidator : public UObject
     
 public:
     UPlanetConfigValidator();
-    
+
     /** Valida a configuração completa do planeta */
     UFUNCTION(BlueprintCallable, Category="Validation")
     static bool ValidateConfig(const UPlanetCoreConfig* Config, TArray<FPlanetValidationError>& OutErrors);
+
+    /** Valida a configuração principal do planeta (alias de ValidateConfig) */
+    UFUNCTION(BlueprintCallable, Category="Validation")
+    static bool ValidateCoreConfig(const UPlanetCoreConfig* Config, TArray<FPlanetValidationError>& OutErrors);
     
     /** Valida apenas a configuração de geração */
     UFUNCTION(BlueprintCallable, Category="Validation")
