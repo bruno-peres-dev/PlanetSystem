@@ -13,8 +13,17 @@
 UPlanetSystemNetworkManager::UPlanetSystemNetworkManager()
 {
     // Inicializar componentes
-    ChunkCache = CreateDefaultSubobject<UPlanetChunkNetworkCache>(TEXT("ChunkCache"));
-    NetworkEventBus = CreateDefaultSubobject<UPlanetNetworkEventBus>(TEXT("NetworkEventBus"));
+    ChunkCache = NewObject<UPlanetChunkNetworkCache>(this, UPlanetChunkNetworkCache::StaticClass(), TEXT("ChunkCache"));
+    if (ChunkCache)
+    {
+        ChunkCache->AddToRoot();
+    }
+
+    NetworkEventBus = NewObject<UPlanetNetworkEventBus>(this, UPlanetNetworkEventBus::StaticClass(), TEXT("NetworkEventBus"));
+    if (NetworkEventBus)
+    {
+        NetworkEventBus->AddToRoot();
+    }
     
     // Obter serviços do ServiceLocator
     Logger = UPlanetSystemLogger::GetInstance();
