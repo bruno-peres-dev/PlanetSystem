@@ -141,8 +141,8 @@ bool UPlanetConfigValidator::ValidateNoiseConfig(const FNoiseConfig& Config, TAr
         // Valida GlobalSeed
         if (Config.GlobalSeed < 0)
         {
-            AddError(OutErrors, EPlanetValidationError::InvalidValue, TEXT("GlobalSeed"), 
-                FString::Printf(TEXT("%d"), Config.GlobalSeed), TEXT("Seed must be non-negative"), 7);
+            AddError(OutErrors, EPlanetValidationError::InvalidValue, TEXT("GlobalSeed"),
+                TEXT("Seed must be non-negative"), 7);
             bIsValid = false;
         }
         
@@ -221,15 +221,15 @@ bool UPlanetConfigValidator::ValidateBiomeConfig(const FBiomeConfig& Config, TAr
         // Verifica consistência dos thresholds
         if (Config.DesertAltitudeThreshold <= Config.MountainAltitudeThreshold)
         {
-            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("AltitudeThresholds"), 
-                TEXT("Desert <= Mountain"), TEXT("Desert threshold should be higher than mountain threshold"), 8);
+            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("AltitudeThresholds"),
+                TEXT("Desert threshold should be higher than mountain threshold"), 8);
             bIsValid = false;
         }
         
         if (Config.SnowAltitudeThreshold <= Config.MountainAltitudeThreshold)
         {
-            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("AltitudeThresholds"), 
-                TEXT("Snow <= Mountain"), TEXT("Snow threshold should be higher than mountain threshold"), 8);
+            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("AltitudeThresholds"),
+                TEXT("Snow threshold should be higher than mountain threshold"), 8);
             bIsValid = false;
         }
         
@@ -248,8 +248,7 @@ bool UPlanetConfigValidator::ValidateFloatValue(float Value, float MinValue, flo
 {
     if (Value < MinValue || Value > MaxValue)
     {
-        AddError(OutErrors, EPlanetValidationError::OutOfRange, FieldName, 
-            FString::Printf(TEXT("%.3f"), Value), 
+        AddError(OutErrors, EPlanetValidationError::OutOfRange, FieldName,
             FString::Printf(TEXT("Value must be between %.3f and %.3f"), MinValue, MaxValue), 7);
         return false;
     }
@@ -261,8 +260,7 @@ bool UPlanetConfigValidator::ValidateIntValue(int32 Value, int32 MinValue, int32
 {
     if (Value < MinValue || Value > MaxValue)
     {
-        AddError(OutErrors, EPlanetValidationError::OutOfRange, FieldName, 
-            FString::Printf(TEXT("%d"), Value), 
+        AddError(OutErrors, EPlanetValidationError::OutOfRange, FieldName,
             FString::Printf(TEXT("Value must be between %d and %d"), MinValue, MaxValue), 7);
         return false;
     }
@@ -278,24 +276,24 @@ bool UPlanetConfigValidator::CheckConfigConflicts(const UPlanetCoreConfig* Confi
         // Verifica se LOD muito alto com resolução baixa
         if (Config->GenerationConfig.MaxLODLevel > 10 && Config->GenerationConfig.BaseMeshResolution < 8)
         {
-            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("LOD_Resolution"), 
-                TEXT("High LOD + Low Resolution"), TEXT("High LOD levels should use higher mesh resolution"), 6);
+            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("LOD_Resolution"),
+                TEXT("High LOD levels should use higher mesh resolution"), 6);
             bHasConflicts = true;
         }
         
         // Verifica se muitos octaves com frequência baixa
         if (Config->NoiseConfig.Octaves > 8 && Config->NoiseConfig.BaseFrequency < 0.5f)
         {
-            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("Octaves_Frequency"), 
-                TEXT("High Octaves + Low Frequency"), TEXT("High octave count should use higher base frequency"), 5);
+            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("Octaves_Frequency"),
+                TEXT("High octave count should use higher base frequency"), 5);
             bHasConflicts = true;
         }
         
         // Verifica se erosão habilitada sem água
         if (Config->GenerationConfig.bEnableErosion && !Config->GenerationConfig.bEnableWater)
         {
-            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("Erosion_Water"), 
-                TEXT("Erosion without Water"), TEXT("Erosion simulation requires water to be enabled"), 8);
+            AddError(OutErrors, EPlanetValidationError::ConflictingValues, TEXT("Erosion_Water"),
+                TEXT("Erosion simulation requires water to be enabled"), 8);
             bHasConflicts = true;
         }
         
@@ -490,14 +488,14 @@ bool UPlanetConfigValidator::IsProductionReady(const UPlanetCoreConfig* Config, 
         // Verificações específicas para produção
         if (Config->bEnableDebugVisualization)
         {
-            AddError(OutErrors, EPlanetValidationError::PerformanceWarning, TEXT("DebugVisualization"), 
-                TEXT("Enabled"), TEXT("Debug visualization should be disabled in production"), 8);
+            AddError(OutErrors, EPlanetValidationError::PerformanceWarning, TEXT("DebugVisualization"),
+                TEXT("Debug visualization should be disabled in production"), 8);
         }
         
         if (Config->bEnablePerformanceProfiling)
         {
-            AddError(OutErrors, EPlanetValidationError::PerformanceWarning, TEXT("PerformanceProfiling"), 
-                TEXT("Enabled"), TEXT("Performance profiling should be disabled in production"), 7);
+            AddError(OutErrors, EPlanetValidationError::PerformanceWarning, TEXT("PerformanceProfiling"),
+                TEXT("Performance profiling should be disabled in production"), 7);
         }
         
         bool bIsProductionReady = OutErrors.Num() == 0;
@@ -673,8 +671,7 @@ void UPlanetConfigValidator::CheckMemoryLimits(const UPlanetCoreConfig* Config, 
     
     if (EstimatedMemoryMB > 1000.0f) // 1GB
     {
-        AddError(OutErrors, EPlanetValidationError::PerformanceWarning, TEXT("MemoryEstimate"), 
-            FString::Printf(TEXT("%.1f MB"), EstimatedMemoryMB), 
+        AddError(OutErrors, EPlanetValidationError::PerformanceWarning, TEXT("MemoryEstimate"),
             TEXT("Estimated memory usage exceeds 1GB"), 8);
     }
 }
@@ -687,8 +684,7 @@ void UPlanetConfigValidator::CheckPerformanceLimits(const UPlanetCoreConfig* Con
     
     if (ComplexityScore > 1000.0f)
     {
-        AddError(OutErrors, EPlanetValidationError::PerformanceWarning, TEXT("ComplexityScore"), 
-            FString::Printf(TEXT("%.1f"), ComplexityScore), 
+        AddError(OutErrors, EPlanetValidationError::PerformanceWarning, TEXT("ComplexityScore"),
             TEXT("Configuration complexity may impact performance significantly"), 7);
     }
 }
