@@ -1,11 +1,31 @@
 {
   "FileVersion": 3,
-  "Version": 1,
-  "VersionName": "1.2",
+  "Version": 2,
+  "VersionName": "2.0.0",
   "FriendlyName": "Planet System Plugin",
-  "Description": "Planeta procedural determinístico com LOD, biomas, oceanos, edição e erosão estilizada.",
+  "Description": "Sistema completo de geração procedural de planetas com arquitetura AAA data-driven. Inclui LOD inteligente, biomas dinâmicos, oceanos, erosão, sistema de cache avançado, logging profissional, profiling de performance, serialização robusta, sistema de presets e validação automática de configurações.",
   "Category": "Procedural",
+  "CreatedBy": "PlanetSystem Team",
+  "CreatedByURL": "",
+  "DocsURL": "",
+  "MarketplaceURL": "",
+  "SupportURL": "",
+  "CanContainContent": true,
+  "IsBetaVersion": false,
+  "IsExperimentalVersion": false,
+  "Installed": false,
   "Modules": [
-    { "Name": "PlanetSystem", "Type": "Runtime", "LoadingPhase": "Default" }
+    { 
+      "Name": "PlanetSystem", 
+      "Type": "Runtime", 
+      "LoadingPhase": "Default",
+      "PlatformAllowList": ["Win64", "Mac", "Linux"]
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "OnlineSubsystem",
+      "Enabled": true
+    }
   ]
 }
