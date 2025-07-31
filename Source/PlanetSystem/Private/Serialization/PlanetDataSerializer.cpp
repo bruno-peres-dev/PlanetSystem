@@ -971,8 +971,9 @@ bool UPlanetDataSerializer::ValidateFileIntegrity(const FString& Subdirectory, c
     }
 }
 
-void UPlanetDataSerializer::CompactData()
+bool UPlanetDataSerializer::CompactData()
 {
+    bool bSuccess = true;
     try
     {
         FString BaseDir = FPaths::ProjectSavedDir() / BaseDirectory;
@@ -995,6 +996,10 @@ void UPlanetDataSerializer::CompactData()
                     TotalSpaceSaved += FileSize;
                     CompactedFiles++;
                 }
+                else
+                {
+                    bSuccess = false;
+                }
             }
         }
         
@@ -1004,11 +1009,14 @@ void UPlanetDataSerializer::CompactData()
         
         UPlanetEventBus::GetInstance()->BroadcastEventWithParams(
             EPlanetEventType::DataCompacted, TEXT("Compaction"), TEXT(""), 0.0f, CompactedFiles);
+
+        return bSuccess;
     }
     catch (const std::exception& e)
     {
-        UPlanetSystemLogger::LogError(TEXT("PlanetDataSerializer"), 
+        UPlanetSystemLogger::LogError(TEXT("PlanetDataSerializer"),
             FString::Printf(TEXT("Exception during data compaction: %s"), UTF8_TO_TCHAR(e.what())));
+        return false;
     }
 }
 
