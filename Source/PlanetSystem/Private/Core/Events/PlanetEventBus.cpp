@@ -118,8 +118,8 @@ void UPlanetEventBus::BroadcastEventWithParams(EPlanetEventType EventType, const
     FPlanetSystemEvent Event;
     Event.EventType = EventType;
     Event.CustomName = CustomName;
-    Event.Timestamp = FPlatformTime::Seconds();
-    Event.Priority = 1.0f;
+    Event.Timestamp = FDateTime::Now();
+    Event.Priority = 1;
     Event.StringParam = StringParam;
     Event.FloatParam = FloatParam;
     Event.IntParam = IntParam;
