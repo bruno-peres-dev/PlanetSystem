@@ -51,7 +51,7 @@ void UPlanetSystemServiceLocator::InitializeServices(UPlanetCoreConfig* Config)
         for (const FPlanetValidationError& Error : ValidationErrors)
         {
             UPlanetSystemLogger::LogWarning(TEXT("ServiceLocator"), 
-                FString::Printf(TEXT("Validation Error: %s - %s"), *Error.FieldName, *Error.Message));
+                FString::Printf(TEXT("Validation Error: %s - %s"), *Error.FieldName, *Error.ErrorMessage));
         }
         
         // Apply auto-fixes if possible
