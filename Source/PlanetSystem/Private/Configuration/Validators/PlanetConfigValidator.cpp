@@ -86,6 +86,12 @@ bool UPlanetConfigValidator::ValidateConfig(const UPlanetCoreConfig* Config, TAr
     }
 }
 
+bool UPlanetConfigValidator::ValidateCoreConfig(const UPlanetCoreConfig* Config, TArray<FPlanetValidationError>& OutErrors)
+{
+    // Mantido para compatibilidade com chamadas existentes
+    return ValidateConfig(Config, OutErrors);
+}
+
 bool UPlanetConfigValidator::ValidateGenerationConfig(const FPlanetGenerationConfig& Config, TArray<FPlanetValidationError>& OutErrors)
 {
     try
