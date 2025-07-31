@@ -132,8 +132,23 @@ public:
     
     /** Log de debug com contexto */
     UFUNCTION(BlueprintCallable, Category="Logging")
-    static void LogDebug(const FString& Message, const FString& Context = TEXT(""), 
+    static void LogDebug(const FString& Message, const FString& Context = TEXT(""),
                         EPlanetLogCategory Category = EPlanetLogCategory::General);
+
+    /** Log de informação com contexto */
+    UFUNCTION(BlueprintCallable, Category="Logging")
+    static void LogInfo(const FString& Message, const FString& Context = TEXT(""),
+                        EPlanetLogCategory Category = EPlanetLogCategory::General);
+
+    /** Log detalhado (verbose) com contexto */
+    UFUNCTION(BlueprintCallable, Category="Logging")
+    static void LogVerbose(const FString& Message, const FString& Context = TEXT(""),
+                           EPlanetLogCategory Category = EPlanetLogCategory::General);
+
+    /** Log crítico com contexto */
+    UFUNCTION(BlueprintCallable, Category="Logging")
+    static void LogCritical(const FString& Message, const FString& Context = TEXT(""),
+                            EPlanetLogCategory Category = EPlanetLogCategory::General);
     
     /** Log de evento do sistema */
     UFUNCTION(BlueprintCallable, Category="Logging")
