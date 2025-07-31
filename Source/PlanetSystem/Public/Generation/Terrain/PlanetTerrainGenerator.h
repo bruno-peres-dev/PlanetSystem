@@ -8,6 +8,7 @@
 #include "Services/Environment/BiomeSystem.h"
 #include "Services/Environment/VegetationSystem.h"
 #include "Services/Environment/WaterComponent.h"
+#include "Common/PlanetTypes.h"
 #include "PlanetTerrainGenerator.generated.h"
 
 // Forward declarations

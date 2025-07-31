@@ -4,6 +4,7 @@
 #include "UObject/Object.h"
 #include "Net/UnrealNetwork.h"
 #include "Configuration/DataAssets/CoreConfig.h"
+#include "Common/PlanetTypes.h"
 #include "PlanetSystemNetworkManager.generated.h"
 
 // Forward declarations
